@@ -1,0 +1,9 @@
+<li>
+    {{.Title}} - {{.Status}}
+    <button
+    hx-target="closest li"
+    hx-swap="outerHTML"
+    hx-delete="/todos/{{.ID}}">
+        Delete
+    </button>
+</li>

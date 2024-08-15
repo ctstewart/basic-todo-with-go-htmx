@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Go HTMX Tutorial</title>
+    <script src="https://unpkg.com/htmx.org@2.0.2"></script>
+</head>
+<body>
+    <h1>Tasks</h1>
+    <ul id="tasks">
+        {{range .todos}}
+        {{template "task.html" .}}
+        {{else}}
+        <li>No tasks found.</li>
+        {{end}}
+    </ul>
+    <form
+    hx-post="/todos"
+    hx-target="#tasks"
+    hx-swap="beforeend">
+        <input name="title"/>
+        <input name="status"/>
+        <button>Save</button>
+    </form>
+</body>
+</html>
